@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/luc/다운로드/project/h264decoder/build",
+  "command": "/usr/bin/c++  -I/home/luc/다운로드/project/h264decoder/src  -Wall -Wpedantic -Wno-deprecated-declarations -g -fPIC -o CMakeFiles/h264decoderlib.dir/src/h264decoder.cpp.o -c /home/luc/다운로드/project/h264decoder/src/h264decoder.cpp",
+  "file": "/home/luc/다운로드/project/h264decoder/src/h264decoder.cpp"
+},
+{
+  "directory": "/home/luc/다운로드/project/h264decoder/build",
+  "command": "/usr/bin/c++ -Dh264decoder_EXPORTS -I/home/luc/다운로드/project/h264decoder/src -isystem /home/luc/다운로드/project/h264decoder/build/_deps/pybind11-src/include -isystem /home/luc/miniconda3/envs/drl39/include/python3.9  -Wall -Wpedantic -Wno-deprecated-declarations -g -fPIC -fvisibility=hidden -o CMakeFiles/h264decoder.dir/src/h264decoder_python.cpp.o -c /home/luc/다운로드/project/h264decoder/src/h264decoder_python.cpp",
+  "file": "/home/luc/다운로드/project/h264decoder/src/h264decoder_python.cpp"
+}
+]

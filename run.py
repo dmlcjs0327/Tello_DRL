@@ -6,7 +6,9 @@ from SD.Plan.Planner import Planner
 from SD.Tello.Tello8889Sensor import Tello8889Sensor
 from SD.Tello.Tello11111Sensor import Tello11111Sensor
 from SD.Test.TelloVirtualController import TelloVirtualController
-
+# sys.path.append('/home/luc/다운로드/project/Tello_DRL/SD/Decoder/h264_39_linux')
+# import h264decoder
+import importlib.util
 
 """
 - Architecture: Sense - Plan - Act Pattern
@@ -37,6 +39,7 @@ class Main:
     
     def __init__(self, mode):
         print(">>> 프로그램 준비중...")
+        
         #종료를 위한 stop_event
         self.stop_event = threading.Event()
         
@@ -69,10 +72,15 @@ class Main:
         print("드론 연결 완료")
         
         #객체 생성
-        self.planner = Planner(self, mode)
         
+        self.planner = Planner(self, mode)
+        # self.decoder = h264decoder.H264Decoder()
+        spec = importlib.util.spec_from_file_location("h264decoder", "/home/luc/다운로드/project/Tello_DRL/SD/Decoder/h264_39_linux/h264decoder.cpython-39-x86_64-linux-gnu.so")
+        h264decoder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(h264decoder)
+        self.decoder = h264decoder.H264Decoder()
         self.tello8889sensor = Tello8889Sensor(self)
-        self.tello11111sensor = Tello11111Sensor(self)
+        self.tello11111sensor = Tello11111Sensor(self,self.decoder)
         
         self.virtual_controller = TelloVirtualController(self)
         

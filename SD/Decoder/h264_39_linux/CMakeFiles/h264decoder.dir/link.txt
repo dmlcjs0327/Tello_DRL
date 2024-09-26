@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall -Wpedantic -Wno-deprecated-declarations -g -shared  -o h264decoder.cpython-39-x86_64-linux-gnu.so CMakeFiles/h264decoder.dir/src/h264decoder_python.cpp.o  libh264decoderlib.a /usr/lib/x86_64-linux-gnu/libavcodec.so /usr/lib/x86_64-linux-gnu/libavutil.so /usr/lib/x86_64-linux-gnu/libswscale.so 

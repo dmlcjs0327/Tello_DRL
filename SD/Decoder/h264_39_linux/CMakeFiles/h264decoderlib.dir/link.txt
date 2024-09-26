@@ -1,0 +1,2 @@
+/usr/bin/ar qc libh264decoderlib.a CMakeFiles/h264decoderlib.dir/src/h264decoder.cpp.o
+/usr/bin/ranlib libh264decoderlib.a

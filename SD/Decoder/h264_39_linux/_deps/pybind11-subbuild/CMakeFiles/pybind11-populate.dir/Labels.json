@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/CMakeFiles/pybind11-populate"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/CMakeFiles/pybind11-populate.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/CMakeFiles/pybind11-populate-complete.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-build.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-configure.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-download.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-install.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-patch.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-test.rule"
+		},
+		{
+			"file" : "/home/luc/\ub2e4\uc6b4\ub85c\ub4dc/project/h264decoder/build/_deps/pybind11-subbuild/pybind11-populate-prefix/src/pybind11-populate-stamp/pybind11-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pybind11-populate"
+		],
+		"name" : "pybind11-populate"
+	}
+}

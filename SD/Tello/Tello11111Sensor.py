@@ -1,23 +1,22 @@
 import sys
-from SD.Decoder import H264decoder
-from SD.Decoder.h264_39 import h264decoder
 import threading
 import traceback
 from time import sleep
+import numpy as np
 
 
 
 class Tello11111Sensor:
     
     #=====Tello11111Sensor의 인스턴스를 생성시 실행될 함수=====
-    def __init__(self, main):
+    def __init__(self, main, decoder):
         self.__printc("생성")
         self.__stop_event = main.stop_event
         self.__main = main
         self.__planner = main.planner
         self.__socket = main.socket11111
         
-        self.__decoder = h264decoder.H264Decoder()
+        self.__decoder = decoder
         self.__packet_data = bytes()
         
         #스레드 실행
@@ -69,7 +68,7 @@ class Tello11111Sensor:
         """
         packet_data = self.__packet_data
         if len(packet_data) != 1460: # frame의 끝이 아니면,
-            for frame in H264decoder.decode(self.__decoder, packet_data): 
+            for frame in self.decode(packet_data): 
                 self.save_to_planner(frame)
 
             self.__packet_data = bytes()
@@ -82,7 +81,22 @@ class Tello11111Sensor:
         self.__planner.set_info_11111Sensor_frame(info)
         
             
-    
+    #입력된 bytes를 frame으로 디코딩 후, 이를 모아 list로 반환 
+    def decode(self, packet_data: bytes):
+        
+        res_frame_list = []
+        frames = self.__decoder.decode(packet_data) #입력받은 raw H.264 data 배열을 디코딩
+
+        for framedata in frames: # framedata는 4개 요소의 튜플로 구성
+            frame, width, height, linesize = framedata
+
+            if frame is not None:
+                frame = np.fromstring(frame, dtype=np.ubyte, count=len(frame), sep='') #UTF-8 인코딩을 통해 문자열을 바이트로 변환
+                frame = frame.reshape((height, int(linesize / 3), 3)) #바이트 배열을 화면 크기에 맞게 변환
+                frame = frame[:, :width, :]
+                res_frame_list.append(frame) #frame을 변환 후 res_frame_list에 추가
+
+        return res_frame_list
     #=====실행내역 출력을 위한 함수=====
     #클래스명을 포함하여 출력하는 함수
     def __printc(self,msg:str):
