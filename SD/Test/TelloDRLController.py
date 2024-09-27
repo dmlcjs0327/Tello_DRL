@@ -7,7 +7,7 @@ import traceback
 from pynput import keyboard  # 여러 키 입력을 처리하기 위한 라이브러리 추가s
 
 
-class TelloVirtualController:
+class TelloDRLController:
     """
     가상의 컨트롤러를 의미하는 클래스
     -GUI 화면을 띄움
@@ -20,7 +20,7 @@ class TelloVirtualController:
 
 
 
-    #=====VirtualController의 인스턴스를 생성시 실행될 함수=====
+    #=====TelloDRLController의 인스턴스를 생성시 실행될 함수=====
     def __init__(self, main):
         self.__printc("생성")
         
@@ -37,8 +37,7 @@ class TelloVirtualController:
         self.__speed = 100
         self.__shift_multiplier = 1  # Shift로 가속 시 1.5배 속도를 반영하기 위한 변수
         self.__pre_cmd = ""
-        
-        self.cur_action = (0,0,0,0)
+        self.__cur_cmd = ""
         
         # 현재 누르고 있는 키들을 저장할 메모리
         self.keys_pressed = set()
@@ -166,12 +165,9 @@ class TelloVirtualController:
 
         # RC 제어 전송
         self.send_rc_control(lr, fb, ud, yaw)
-        self.__planner.set_info_controller_cmd((lr, fb, ud, yaw))
 
     def send_rc_control(self, lr, fb, ud, yaw):
         self.send_cmd(f"rc {lr} {fb} {ud} {yaw}")
-        self.cur_action = (lr,fb,ud,yaw)
-        
 
     #=====카메라 스트리밍을 화면에 출력하는 함수=====
     def func_print_video(self):

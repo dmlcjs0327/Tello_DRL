@@ -5,7 +5,6 @@ from time import sleep
 import numpy as np
 
 
-
 class Tello11111Sensor:
     
     #=====Tello11111Sensor의 인스턴스를 생성시 실행될 함수=====
@@ -23,8 +22,7 @@ class Tello11111Sensor:
         self.__thr_sensor = threading.Thread(target=self.__func_sensor, daemon=True)
         self.__thr_sensor.start()
     
-    
-    
+        
     #=====스레드에서 실행될 함수=====
     def __func_sensor(self):
         self.__printf("실행",sys._getframe().f_code.co_name)

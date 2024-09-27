@@ -34,13 +34,14 @@ class Planner:
         #종료를 위한 virtual controller 접근
         self.__main = main  
         
-        
         #각 센서가 저장하는 값
-        self.__cmd_queue = [] #명령을 저장할 큐
+        self.__info_controller_cmd = (0,0,0,0) #명령
         self.__info_8889Sensor_cmd = None #수행확인명령
         self.__info_11111Sensor_frame = None #Frame
         self.__info_11111Sensor_image = None
         
+        # 강화학습을 위한 이전 상태
+        self.pre_state = None
 
         self.__YOLOv8 = YOLOv8()
 
@@ -69,6 +70,8 @@ class Planner:
             while not self.stop_event.is_set():
                 # 프레임을 그냥 이미지 or 객체인식 이미지로 변환
                 self.__redraw_frame() #좌표받아오기
+                cur_action = self.get_info_controller_cmd()
+                cur_state = self.get_info_11111Sensor_image()
 
         except Exception as e:
             self.__printf("ERROR {}".format(e),sys._getframe().f_code.co_name)
@@ -129,6 +132,15 @@ class Planner:
 
 
     #=====getter/setter 선언=====
+
+    #controller_cmd
+    def get_info_controller_cmd(self):
+        info = self.__info_controller_cmd
+        return info
+    
+    def set_info_controller_cmd(self, info):
+        self.__info_controller_cmd = info
+
 
     #8889Sensor_cmd
     def get_info_8889Sensor_cmd(self):

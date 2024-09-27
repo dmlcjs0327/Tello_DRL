@@ -13,7 +13,6 @@ class YOLOv8:
         # 모델 객체 생성
         # YOLOv8 모델을 로드 (YOLOv8s)
         self.__model = ultralytics.YOLO('yolov8s.pt')  # 경로를 수정해서 직접 로컬 모델 사용 가능
-        self.__classes = self.__model.names
         self.__device = 'cuda' if torch.cuda.is_available() else 'cpu'
         print(">>>>>>GPU 사용:", self.__device)
     
@@ -21,8 +20,6 @@ class YOLOv8:
         """
         frame에서 객체를 감지하고, 윈도우를 적용한 image와 윈도우 리턴
         """
-        # 감지한 객체 윈도우들의 좌표를 저장할 리스트
-        window_coor_list = []
         
         # 프레임에서 감지한 객체들의 레이블들, 좌표들이 들어있는 리스트
         results = self.__model(frame, stream=True, verbose=False)        
@@ -61,4 +58,4 @@ class YOLOv8:
         # image를 imagetk 형식으로 변환
         image = ImageTk.PhotoImage(image)
         
-        return image
+        return image, reward

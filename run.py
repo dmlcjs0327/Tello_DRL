@@ -74,8 +74,8 @@ class Main:
         #객체 생성
         
         self.planner = Planner(self, mode)
-        # self.decoder = h264decoder.H264Decoder()
-        spec = importlib.util.spec_from_file_location("h264decoder", "/home/luc/다운로드/project/Tello_DRL/SD/Decoder/h264_39_linux/h264decoder.cpython-39-x86_64-linux-gnu.so")
+        # spec = importlib.util.spec_from_file_location("h264decoder", "/home/luc/다운로드/project/Tello_DRL/SD/Decoder/h264_39_linux/h264decoder.cpython-39-x86_64-linux-gnu.so")
+        spec = importlib.util.spec_from_file_location("h264decoder", "C:\LUC\jupyter\paper-KAI논문\Tello_DRL\SD\Decoder\h264_39_windows\h264decoder.cp39-win_amd64.pyd")
         h264decoder = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(h264decoder)
         self.decoder = h264decoder.H264Decoder()
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     m1 = "camera"
     m2 = "yolo"
     
-    mode = m2
+    mode = m1
     version = sys.version.split(".")
     if version[0] == "3" and version[1] == "9":
         Main(mode)
